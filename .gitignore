@@ -1,3 +1,7 @@
+# All vid tutorials
+*.mpv
+*.mp4
+
 .VSCodeCounter/
 
 # Byte-compiled / optimized / DLL files
