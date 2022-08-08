@@ -1,0 +1,64 @@
+06 Aug 2022 18:22
+------------------------------
+TEST 1
+5/5
+Title: Testing string 1, Function: charFrequencies
+Result: PASSED
+------------------------------
+TEST 2
+3/3
+Title: Testing string 1, Function: createHuffmanTree
+Result: PASSED
+------------------------------
+TEST 3
+10/10
+Title: Testing string 1, Function: calculateCodes
+Result: PASSED
+------------------------------
+TEST 4
+15/15
+Title: Testing string 1, Function: encodeString
+Result: PASSED
+------------------------------
+TEST 5
+5/5
+Title: Testing string 2, Function: charFrequencies
+Result: PASSED
+------------------------------
+TEST 6
+3/3
+Title: Testing string 2, Function: createHuffmanTree
+Result: PASSED
+------------------------------
+TEST 7
+10/10
+Title: Testing string 2, Function: calculateCodes
+Result: PASSED
+------------------------------
+TEST 8
+15/15
+Title: Testing string 2, Function: encodeString
+Result: PASSED
+------------------------------
+TEST 9
+5/5
+Title: Testing string 3, Function: charFrequencies
+Result: PASSED
+------------------------------
+TEST 10
+4/4
+Title: Testing string 3, Function: createHuffmanTree
+Result: PASSED
+------------------------------
+TEST 11
+10/10
+Title: Testing string 3, Function: calculateCodes
+Result: PASSED
+------------------------------
+TEST 12
+15/15
+Title: Testing string 3, Function: encodeString
+Result: PASSED
+------------------------------
+
+Total Grade: 100/100

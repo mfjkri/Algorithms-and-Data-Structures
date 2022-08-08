@@ -1,0 +1,64 @@
+06 Aug 2022 18:21
+------------------------------
+TEST 1
+5/5
+Title: TESTING RESULT [Function: doubles, File: prices10.csv, Budget: 20]
+Result: PASSED
+------------------------------
+TEST 2
+5/5
+Title: TESTING RESULT [Function: doubles, File: prices20.csv, Budget: 40]
+Result: PASSED
+------------------------------
+TEST 3
+5/5
+Title: TESTING RESULT [Function: doubles, File: prices100.csv, Budget: 200]
+Result: PASSED
+------------------------------
+TEST 4
+10/10
+Title: TESTING RESULT [Function: doubles, File: prices200.csv, Budget: 400]
+Result: PASSED
+------------------------------
+TEST 5
+10/10
+Title: TESTING RESULT [Function: doubles, File: prices500.csv, Budget: 1000]
+Result: PASSED
+------------------------------
+TEST 6
+15/15
+Title: TESTING SPEED [Function: doubles, File: prices500.csv, Budget: 1000, Speed Limit: 0.001s]
+Result: PASSED
+------------------------------
+TEST 7
+5/5
+Title: TESTING RESULT [Function: triples, File: prices10.csv, Budget: 20]
+Result: PASSED
+------------------------------
+TEST 8
+5/5
+Title: TESTING RESULT [Function: triples, File: prices20.csv, Budget: 40]
+Result: PASSED
+------------------------------
+TEST 9
+5/5
+Title: TESTING RESULT [Function: triples, File: prices100.csv, Budget: 200]
+Result: PASSED
+------------------------------
+TEST 10
+10/10
+Title: TESTING RESULT [Function: triples, File: prices200.csv, Budget: 400]
+Result: PASSED
+------------------------------
+TEST 11
+10/10
+Title: TESTING RESULT [Function: triples, File: prices500.csv, Budget: 1000]
+Result: PASSED
+------------------------------
+TEST 12
+15/15
+Title: TESTING SPEED [Function: triples, File: prices500.csv, Budget: 1000, Speed Limit: 1s]
+Result: PASSED
+------------------------------
+
+Total Grade: 100/100

@@ -1,0 +1,54 @@
+06 Aug 2022 06:12
+------------------------------
+TEST 1
+5/5
+Title: Testing network5.csv, Function: shortestPaths('Ann', adjList)
+Result: PASSED
+------------------------------
+TEST 2
+5/5
+Title: Testing network5.csv, Function: betweennessCentrality
+Result: PASSED
+------------------------------
+TEST 3
+10/10
+Title: Testing network6.csv, Function: shortestPaths('Draco', adjList)
+Result: PASSED
+------------------------------
+TEST 4
+10/10
+Title: Testing network6.csv, Function: betweennessCentrality
+Result: PASSED
+------------------------------
+TEST 5
+15/15
+Title: Testing network7.csv, Function: shortestPaths('Shawn', adjList)
+Result: PASSED
+------------------------------
+TEST 6
+15/15
+Title: Testing network7.csv, Function: betweennessCentrality
+Result: PASSED
+------------------------------
+TEST 7
+10/10
+Title: Testing network8.csv, Function: shortestPaths('Jake', adjList)
+Result: PASSED
+------------------------------
+TEST 8
+10/10
+Title: Testing network8.csv, Function: betweennessCentrality
+Result: PASSED
+------------------------------
+TEST 9
+10/10
+Title: Testing network19.csv, Function: shortestPaths('Noah', adjList)
+Result: PASSED
+------------------------------
+TEST 10
+10/10
+Title: Testing network19.csv, Function: betweennessCentrality
+Result: PASSED
+------------------------------
+
+Total Grade: 100/100
