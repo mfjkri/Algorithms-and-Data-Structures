@@ -20,17 +20,18 @@ def shortestPaths(start: str, adjList: Dict[str, List[str]]) -> Dict[str, List[s
     - When there are multiple shortest paths, always choose the one that has lower alphabetical order
     """
 
-    # Keep track of which vertices have already been enqueued
-    enqueued: List[str] = []
-    # Keep track of the shortest path to each vertices
-    shortest_paths: Dict[str, List[str]] = {}
-
     # Create a queue
     queue: Deque = deque()
 
+    # Keep track of which vertices have already been enqueued
+    queue_history: List[str] = []
+
+    # Keep track of the shortest path to each vertices
+    shortest_paths: Dict[str, List[str]] = {}
+
     # Enqueue the start vertex and mark it as such
-    enqueued.append(start)
     queue.append(start)
+    queue_history.append(start)
 
     # Keep going as long there the queue is not empty
     while queue:
@@ -46,10 +47,11 @@ def shortestPaths(start: str, adjList: Dict[str, List[str]]) -> Dict[str, List[s
             adj_vertex: str
 
             # If adjacent vertex has not been enqueued already
-            if adj_vertex not in enqueued:
+            if adj_vertex not in queue_history:
 
-                # Mark as enqueued
-                enqueued.append(adj_vertex)
+                # Enqueue adjacent vertex and mark is as such
+                queue.append(adj_vertex)
+                queue_history.append(adj_vertex)
 
                 # Only create shortest path if its not start vertex
                 if current_vertex != start:
@@ -58,9 +60,6 @@ def shortestPaths(start: str, adjList: Dict[str, List[str]]) -> Dict[str, List[s
                     new_path = list(shortest_paths.get(current_vertex, list()))
                     new_path.append(current_vertex)
                     shortest_paths.update({adj_vertex: new_path})
-
-                # Enqueue adjacent vertex
-                queue.append(adj_vertex)
 
     return shortest_paths
 
@@ -77,11 +76,11 @@ def betweennessCentrality(adjList: Dict[str, List[str]]) -> Dict[str, int]:
     # Create a counter object
     centrality_counter = Counter()
 
+    # Initialize each vertex count in the counter to 0
     for vertex in adjList.keys():
+        centrality_counter[vertex] = 0
 
-        # Initialize vertex count in the counter to 0
-        if vertex not in centrality_counter:
-            centrality_counter[vertex] = 0
+    for vertex in adjList.keys():
 
         # Get all the shortest paths from the vertex to all other connected vertices
         shortest_paths = shortestPaths(start=vertex, adjList=adjList)
@@ -90,12 +89,6 @@ def betweennessCentrality(adjList: Dict[str, List[str]]) -> Dict[str, int]:
 
             for vertex_path in path:
                 vertex_path: str
-
-                # Initialize vertex count in the counter to 0
-                # This is a secondary intiialization as some vertices may
-                # be accessed here before it is access in the first for loop
-                if vertex_path not in centrality_counter:
-                    centrality_counter[vertex_path] = 0
 
                 # Increment the count of the vertex by 1
                 centrality_counter[vertex_path] += 1
