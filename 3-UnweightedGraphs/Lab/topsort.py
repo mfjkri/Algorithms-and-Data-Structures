@@ -19,51 +19,78 @@
     - To test your implementation, run `python utils/topsort_test.py`
 """
 
-from typing import List, Union
+from enum import Enum, auto
+from typing import List, Dict, Union
 from utils.helpers import Digraph, DirectedEdge
 
 
-class CyclicDirectedGraph(Exception):
-    pass
+class VisitStatus(Enum):
+    IN_PROGRESS = auto()
+    SAFE = auto()
 
 
-def dfs(current_vertex_index: int,
-        graph: Digraph,
-        adjList: List[DirectedEdge],
-        stack_vertex_order: List[int],
+def check_for_cycle(curr_vertex: int,
+                    adjList: List[List[DirectedEdge]],
+                    visited: Dict[int, Union[VisitStatus, None]]) -> bool:
+
+    if curr_vertex in visited:
+        # If the current vertex is already marked as in progress
+        # then this means that we have a cycle
+        if visited[curr_vertex] == VisitStatus.IN_PROGRESS:
+            return True
+        # Else if it already marked as safe,
+        # no point checking this vertex again (and its edges)
+        elif visited[curr_vertex] == VisitStatus.SAFE:
+            return False
+
+    # Mark the current vertex as in progress
+    visited[curr_vertex] = VisitStatus.IN_PROGRESS
+
+    # Process all its edges
+    for adj_edge in adjList[curr_vertex]:
+        adj_edge: DirectedEdge
+        adj_vertex: int = adj_edge.dest
+
+        # Check each adj vertex for a cycle
+        # If a cycle is detected for an adj vertex
+        # Then propagate it upwards (to the parent function call)
+        if check_for_cycle(
+            curr_vertex=adj_vertex,
+            adjList=adjList,
+            visited=visited
+        ):
+            return True
+
+    # After all its edges has been processed
+    # (we won't reach this point if a cycle is detected in itself or its connected edges)
+    # We can then mark this vertex as safe
+    visited[curr_vertex] = VisitStatus.SAFE
+
+    # Return false to propagate that this vertex contains no cycles
+    return False
+
+
+def dfs(curr_vertex: int,
+        adjList: List[List[DirectedEdge]],
         visited: List[bool],
         topo_order: List[int]) -> None:
 
-    if visited[current_vertex_index] is False:
-        visited[current_vertex_index] = True
-        stack_vertex_order.append(current_vertex_index)
+    if visited[curr_vertex] is False:
+        visited[curr_vertex] = True
 
-        for adj_vertex in adjList:
-            adj_vertex: DirectedEdge
-            adj_vertex_index: int = adj_vertex.dest
+        for adj_edge in adjList[curr_vertex]:
+            adj_edge: DirectedEdge
+            adj_vertex: int = adj_edge.dest
 
-            # If we have already passed this vertex earlier in the same stack calls
-            # this means that we have completed a cycle
-            # hence the directed graph is cylic.
-            # Raise an exception here so we can catch it below
-            if adj_vertex_index in stack_vertex_order:
-                raise CyclicDirectedGraph()
-
-            # Else, we can just traverse further
-            # No need to check if we already visited this vertex
-            # as we already have a check at the start of this function
-            # (maybe can still have one to reduce number of function calls made)
             dfs(
-                current_vertex_index=adj_vertex_index,
-                graph=graph,
-                adjList=graph.adjList[adj_vertex_index],
-                stack_vertex_order=stack_vertex_order,
+                curr_vertex=adj_vertex,
+                adjList=adjList,
                 visited=visited,
                 topo_order=topo_order
             )
 
         # post-order visiting
-        topo_order.append(current_vertex_index)
+        topo_order.append(curr_vertex)
 
 
 def topsort(digraph: Digraph) -> Union[List[int], None]:
@@ -91,19 +118,22 @@ def topsort(digraph: Digraph) -> Union[List[int], None]:
     #    2b. Keep track of vertices currently on the recursive stack. If a vertex visited is on the
     #        recursive stack, a cycle is present
 
-    for vertex_index, adjList in enumerate(digraph.adjList):
-        adjList: List[DirectedEdge]
-        try:
-            dfs(
-                current_vertex_index=vertex_index,
-                graph=digraph,
-                adjList=adjList,
-                stack_vertex_order=list(),
-                visited=visited,
-                topo_order=topo_order
-            )
-        except CyclicDirectedGraph:
+    for vertex, adj_edges in enumerate(digraph.adjList):
+        adj_edges: List[DirectedEdge]
+
+        if check_for_cycle(
+            curr_vertex=vertex,
+            adjList=digraph.adjList,
+            visited={}
+        ):
             return None
+
+        dfs(
+            curr_vertex=vertex,
+            adjList=digraph.adjList,
+            visited=visited,
+            topo_order=topo_order
+        )
 
     # 3. Return ordering of vertices visited in dfs reversed
     return topo_order[::-1]
