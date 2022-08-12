@@ -1,0 +1,49 @@
+10 Aug 2022 04:31
+------------------------------
+TEST 1
+10/10
+Title: Testing exchange rates 1
+Result: PASSED
+------------------------------
+TEST 2
+10/10
+Title: Testing exchange rates 2
+Result: PASSED
+------------------------------
+TEST 3
+10/10
+Title: Testing exchange rates 3
+Result: PASSED
+------------------------------
+TEST 4
+10/10
+Title: Testing exchange rates 4
+Result: PASSED
+------------------------------
+TEST 5
+10/10
+Title: Testing exchange rates 5
+Result: PASSED
+------------------------------
+TEST 6
+10/10
+Title: Testing exchange rates 6
+Result: PASSED
+------------------------------
+TEST 7
+10/10
+Title: Testing exchange rates 7
+Result: PASSED
+------------------------------
+TEST 8
+10/10
+Title: Testing exchange rates 8
+Result: PASSED
+------------------------------
+TEST 9
+20/20
+Title: Testing exchange rates 8 speed < 0.005s
+Result: PASSED
+------------------------------
+
+Total Grade: 100/100
