@@ -1,0 +1,44 @@
+15 Aug 2022 01:31
+------------------------------
+TEST 1
+10/10
+Title: Testing substring: (empty string)
+Result: PASSED
+------------------------------
+TEST 2
+10/10
+Title: Testing substring: ANA
+Result: PASSED
+------------------------------
+TEST 3
+10/10
+Title: Testing substring: AABB
+Result: PASSED
+------------------------------
+TEST 4
+10/10
+Title: Testing substring: ABABC
+Result: PASSED
+------------------------------
+TEST 5
+15/15
+Title: Testing substring: HELLO, WORLD
+Result: PASSED
+------------------------------
+TEST 6
+15/15
+Title: Testing substring: FINITE & automata
+Result: PASSED
+------------------------------
+TEST 7
+15/15
+Title: Testing substring: someRandomString
+Result: PASSED
+------------------------------
+TEST 8
+15/15
+Title: Testing substring: teststring123
+Result: PASSED
+------------------------------
+
+Total Grade: 100/100
